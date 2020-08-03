@@ -1,1 +1,6 @@
 debianrefs.bib
+*.aux
+*.bcf
+*.log
+*.out
+*.pdf

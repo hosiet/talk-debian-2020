@@ -45,7 +45,7 @@
 %\setbeameroption{show notes on second screen=right}
 \setbeameroption{hide notes}
 \title[Intro to Debian and FLOSS development]{Debian及自由软件简介}
-\author[hosiet]{Boyuan Yang \\ \href{mailto:byang@debian.org}}
+\author[hosiet]{Boyuan Yang \\ \href{mailto:byang@debian.org}{byang@debian.org} }
 \institute[Debian]{Debian Project}
 \date{\today}
 \begin{document}
@@ -76,28 +76,7 @@
 \vskip 1em
 存在一个盲点：无法确保从\emph{源代码}到所构建\emph{二进制}软件包的对应关系与安全性。
 \end{frame}
-\begin{frame}{Debian软件现状}{无法保证构建稳定性，为什么不安全？}
-构建过程不确定，就无法确保二进制软件包的安全性。
 
-\begin{enumerate}
-\item Debian开发者可能为了某种利益\footnote{Debian官方直到2014年才开始接受仅包含源代码的上传
-（SourceOnlyUpload）仅上传源代码可以阻止开发者有意准备含有后门或漏洞的二进制软件包。直到
-今天，Debian仓库仍然允许二进制包的上传，且在可预见的未来将一直如此。\cite{debianwikisou}}故意上传带后门的二进制deb包；
-\item 攻击实例：CVE-2002-0083 for OpenSSH，单比特翻转导致远程提权漏洞；
-\item 编译器自身的问题，如XCodeGhost。
-\end{enumerate}
-\pause
-
-我们希望构建过程是稳定的，是\emph{可重现}的。
-\vfill
-
-\begin{quotation}
-The motivation behind "reproducible" builds is to allow verification that no flaws have been introduced during the compilation process.\cite{minidebconf20161113}
-\end{quotation}
-\end{frame}
-\subsection{目标描述}
-\begin{frame}{工作目标}{期望效果与解决方案}
-期望达到的目标：确定的条件下构建的软件包完全相同（“bit-to-bit identical”）。
 
 \iffalse
 \begin{figure}[htbp]
@@ -110,8 +89,6 @@ The motivation behind "reproducible" builds is to allow verification that no fla
 \end{figure}
 \fi
 
-于是，我们可以在多个不同的场合下对软件进行重新构建，给出的二进制包与构建所得的二进制包互相对照是否相同以确保给出的二进制包与源码包的对应关系。
-\end{frame}
 \section{工作重点}
 \subsection{核心问题}
 \subsection{问题分类}
@@ -161,7 +138,7 @@ The motivation behind "reproducible" builds is to allow verification that no fla
 \vspace{1em}
 \begin{itemize}
 \item 纯数字的UNIX时间戳；
-\item 如果环境变量中给定了这个变量，则将所有自己程序的时间戳设为该变量对应的时间。\cite{debian-reproduciblebuilds-sourcedateepoch}
+\item 如果环境变量中给定了这个变量，则将所有自己程序的时间戳设为该变量对应的时间。
 \item 已经被包括\texttt{gcc}在内的各大项目所接受，从根本上解决了时间戳问题。
 \end{itemize}
 \end{frame}
@@ -179,7 +156,7 @@ The motivation behind "reproducible" builds is to allow verification that no fla
 \subsection{工作进度}
 \begin{frame}{工作进度展示}{Debian 9(Stretch)完成情况}
 \only<1>{%
-  即将发布的Debian 9可以保证90\%以上的软件包可靠地重复构建。\cite{debian-reproduciblebuilds-homepage}
+  即将发布的Debian 9可以保证90\%以上的软件包可靠地重复构建。
   \vskip 1em%
   % 三线表！
   \begin{tabular}{ccccc}%
