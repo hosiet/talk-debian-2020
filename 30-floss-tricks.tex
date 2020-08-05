@@ -1,0 +1,46 @@
+% 30-floss-tricks.tex
+
+\begin{frame}{开源社区协作技巧}
+	\begin{itemize}
+		\item 除非是完全国人开发维护的项目，否则请全程使用英文。
+		\begin{itemize}
+		    \item 开源社区通用的协作语言是英语，使用中文意味着别人只能用谷歌翻译理解你的内容，某些上游可能初看中文看不懂就直接无视你的贡献。
+		    \item 请尽量使用正确英文语法，避免使用缩写（除非缩写已约定俗成）。
+		    \item 请只在全中文项目中使用中文：判断方法很简单，如果大多数其它讨论都是中文，那么可以使用中文。
+		\end{itemize}
+	    \item 提Pull Request或提供补丁时尽量原子化、简单化。
+	    \begin{itemize}
+	    	\item 一个补丁精准解决一个问题，避免无关修改（如不必要的空格/制表符/换行）
+	    	\item 提交说明中准确描述补丁的作用
+	    	\item 使用Git协作时善用\texttt{git rebase}，即使开发时有多个提交，在提出PR时要基于上游最新代码变基，并将自己的提交合并至单一提交或少数几个意义清晰的提交
+	    \end{itemize}
+        \item 讨论时永远不要吵起来
+        \begin{itemize}
+        	\item 任何情况下都对你没有任何好处
+        \end{itemize}
+	\end{itemize}	
+\end{frame}
+
+\begin{frame}{开源社区协作技巧（二）}
+	\begin{itemize}
+		\item “固定”你的身份
+		\begin{itemize}
+			\item 与他人交流时选择一个全名（或昵称），选择一个（半永久）电子邮箱地址，不要常常改动
+			\item 有助于其他人认识你，方便建立身份和声望（“Reputation”）
+		\end{itemize}
+		\item 讨论时给出充足的引用信息
+		\begin{itemize}
+			\item 如需引用某段文档，应同时给出对应网页超链接
+			\item 考虑类似科技文献的引用方式（\texttt{[1][2]...}）
+			\item 在支持Markdown等标记语言的场景下（如GitHub Issue）更加方便（Markdown等标记语言原生支持超链接等语法）
+		\end{itemize}
+		\item 基于电子邮件的协作
+		\begin{itemize}
+			\item 如果可能，请用纯文本电子邮件（非HTML电子邮件）
+			\item 回复讨论时适当引用原文
+			\item 遵循英文信件书写格式（或者看看其他人的写法，模仿来进行书写）
+			\item 如果常常用电子邮件打交道，建议选择一个靠谱的电子邮件客户端（如Evolution、Thunderbird等）
+		\end{itemize}
+
+	\end{itemize}	
+\end{frame}
