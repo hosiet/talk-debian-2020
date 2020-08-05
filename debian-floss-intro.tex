@@ -33,6 +33,7 @@
     %maxbibnames=2,
 ]{biblatex}
 \usepackage{filecontents}
+\usepackage{subfiles}
 
 \addbibresource{debianrefs.bib}
 % set global background; must in preamble
@@ -71,8 +72,10 @@
 	\end{itemize}
     \vfill
 \end{frame}
-	
 
+\subfile{24-slang-debian}
+\subfile{25-slang}
+	
 \begin{frame}{内容概览}
 \tableofcontents
 \end{frame}
