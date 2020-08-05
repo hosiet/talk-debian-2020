@@ -44,14 +44,35 @@
 \setbeamertemplate{note page}[plain]
 %\setbeameroption{show notes on second screen=right}
 \setbeameroption{hide notes}
-\title[Intro to Debian and FLOSS development]{Debian及自由软件简介}
-\author[hosiet]{Boyuan Yang \\ \href{mailto:byang@debian.org}{byang@debian.org} }
+\title[Intro to Debian and FLOSS community]{Debian及自由软件社区简介}
+\author[@byang/@hosiet]{杨博远 \\ （Boyuan Yang） \\ \href{mailto:byang@debian.org}{byang@debian.org} }
 \institute[Debian]{Debian Project}
 \date{\today}
 \begin{document}
+	
+%% Title page
 \begin{frame}
 \titlepage
 \end{frame}
+
+%% Personal introduction
+\begin{frame}{个人简介}
+	\begin{itemize}
+		\item \texttt{Boyuan Yang \href{mailto:byang@debian.org}{<byang@debian.org>}}
+		\item Debian开发者（\texttt{“Debian Developer”}，2018年至今）
+		\item 主要关注方向： \\
+		\begin{itemize}
+			\item 输入法相关软件（fcitx、ibus）
+			\item 软件的国际化和本地化（\texttt{i18n/l10n}）
+			\item Deepin相关软件
+			\item Python软件库与Python编写软件的打包
+			\item 整体质保
+		\end{itemize}
+	\end{itemize}
+    \vfill
+\end{frame}
+	
+
 \begin{frame}{内容概览}
 \tableofcontents
 \end{frame}
@@ -77,17 +98,6 @@
 存在一个盲点：无法确保从\emph{源代码}到所构建\emph{二进制}软件包的对应关系与安全性。
 \end{frame}
 
-
-\iffalse
-\begin{figure}[htbp]
-\begin{tikzpicture} [%distance=10em,
-  every node/.style = {shape=rectangle, draw, align=center}]
-  \graph [grow down, branch right=4cm] {
-    {源代码, 环境描述 [fill=blue!20], 软件包元信息} -> 可重复的构建过程 [fill=red!20] -> 目标软件包;
-  };
-\end{tikzpicture}
-\end{figure}
-\fi
 
 \section{工作重点}
 \subsection{核心问题}
@@ -154,37 +164,7 @@
 \end{itemize}
 \end{frame}
 \subsection{工作进度}
-\begin{frame}{工作进度展示}{Debian 9(Stretch)完成情况}
-\only<1>{%
-  即将发布的Debian 9可以保证90\%以上的软件包可靠地重复构建。
-  \vskip 1em%
-  % 三线表！
-  \begin{tabular}{ccccc}%
-    \toprule%
-    套件 & all & reproducible & unrep & FTBFS \\%
-    \midrule%
-    testing/amd64 & 24132 & 22090 / 91.5\% & 1557 / 6.4\% & 291 / 1.2\% \\
-    testing/i386 & 24132 & 21355 / 88.4\% & 2170 / 8.9\% & 374 / 1.5\% \\%
-    testing/armhf & 24132 & 21009 / 87.1\% & 1852 / 7.6\% & 695 / 2.8\% \\%
-    sid/amd64 & 25399 & 19182 / 75.5\% & 4501 / 17.7\% & 944 / 3.7\% \\%
-    sid/i386 & 25399 & 18632 / 73.3\% & 5054 / 19.8\% & 1153 / 4.5\% \\%
-    sid/armhf & 25399 & 18591 / 73.2\% & 4823 / 18.9\% & 1215 / 4.7\% \\%
-    \bottomrule%
-  \end{tabular}%
-}%
-\only<2>{%
-  {\Large Debian Testing (9) x86\_64平台测试情况}%
-  \vfill
-  
-  \includegraphics[width=0.95\paperwidth]{stats_pkg_state_testing_amd64.png}
-}%
-\only<3>{%
-  {\Large Debian Unstable (sid) x86\_64平台测试情况}%
-  \vfill
-  
-  \includegraphics[width=0.95\paperwidth]{stats_pkg_state_unstable_amd64.png}
-}%
-\end{frame}
+
 \section{其他项目}
 \begin{frame}{其他参与可重复性构建的软件项目}
 \begin{columns}
@@ -243,11 +223,13 @@
 \nocite{*}
 \printbibliography
 \end{frame}
+
 \begin{frame}{Q\&A}{问答}
 \begin{center}
 {\Large 问~答~环~节}
 \end{center}
 \end{frame}
+
 \begin{frame}{版权声明}{Copyright Notice}
 本文档以\href{https://creativecommons.org/licenses/by-sa/4.0/legalcode}{知识共享~署名-相同方式共享4.0协议（国际）}发布。
 \vspace{1em}

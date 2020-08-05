@@ -4,3 +4,10 @@ debianrefs.bib
 *.log
 *.out
 *.pdf
+*.nav
+*.run.xml
+*.snm
+*.synctex.gz
+*.toc
+*.blg
+*.bbl
