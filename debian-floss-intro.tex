@@ -10,7 +10,7 @@
 % * xelatex
 % * xelatex
 %
-\documentclass{beamer}
+\documentclass[aspectratio=169]{beamer}
 \usetheme{Madrid}
 \usecolortheme{beaver}
 \usepackage{ctex}
@@ -73,12 +73,8 @@
     \vfill
 \end{frame}
 
-\subfile{24-slang-debian}
-\subfile{25-slang}
 
-\subfile{30-floss-tricks}
-
-\begin{frame}{内容概览}
+\begin{frame}{目录}
 \tableofcontents
 \end{frame}
 
@@ -87,133 +83,23 @@
 % Presentation contents
 %----------------------
 
-\section{问题提出}
-\subsection{存在问题}
-\begin{frame}{Debian软件现状}{为了安全，已经做到了什么？}
-作为开源软件项目，Debian提供的软件有以下的特性保证安全：
-\begin{itemize}
-\item 使用GPG签名验证源代码可信与否（需要上游支持）；
-\item 提供编译选项进行安全增强；
-\item 提供经过签名的源码包供用户自行编译使用；
-\item 对二进制包所在软件仓库\footnote{默认情况下并没有对单独的二进制.deb包签名，这是一个问题。}签名确保安全性；
-\item 部分镜像站点启用HTTPS确保传输安全。
-\end{itemize}
-\pause
-\vskip 1em
-存在一个盲点：无法确保从\emph{源代码}到所构建\emph{二进制}软件包的对应关系与安全性。
-\end{frame}
+\section{Debian简介与社区文化}
 
+\subfile{01-debian-intro}
 
-\section{工作重点}
-\subsection{核心问题}
-\subsection{问题分类}
-\begin{frame}{可重复构建面临的挑战}{不确定性因素的分类}
-要排除不确定性因素，包括以下各个方面：
+\subfile{24-slang-debian}
 
-\vspace{1em}
-\begin{enumerate}
-\item 时间戳；
-\item 时区与地区格式；
-\item 不确定的文件排序；
-\item 不确定的字典、散列值排序；
-\item 用户、用户组、\texttt{umask}、环境变量；
-\item 构建路径（build path）；\footnote{在Debian 9中容忍同样的构建路径，在sid中则将其纳入考虑范围内。\vspace{1em}}
-\item 其它与环境相关的可变情况。
-\end{enumerate}
-\end{frame}
-\subsection{工作思路}
-\begin{frame}{Debian中开展可重复构建工作}{工作思路}
-\begin{itemize}
-\item {在某个Debian环境中连续两次构建一个软件包，改变如下变量：
-  \begin{enumerate}
-  \item 时间、日期；
-  \item 主机名、域名；
-  \item 文件系统（disorderfs?）；
-  \item 时区、地区locale；
-  \item 用户ID、用户组ID；
-  \item 内核版本、CPU厂商；
-  \item \texttt{/bin/sh}默认shell；
-  \item 各类其它环境变量，等等。
-  \end{enumerate}
-  }
-\item {比较两者构建结果是否相同：
-  \begin{itemize}
-    \item 如相同，记录结果；
-    \item 如不同，使用特定工具（diffoscope）检查构建结果，寻找不同点并找到原因所在，记录并提交缺陷报告；
-    \item 与上游一起工作，提交补丁，等等。
-  \end{itemize}
-}
-\end{itemize}
-\end{frame}
-\subsection{辅助工具}
+\section{Debian是如何开发的？}
 
-\begin{frame}[t]{工作成果展示}{制定标准}
-{\Large SOURCE\_DATE\_EPOCH：\xout{\sout{独立自主}}制定的环境变量标准}
+\section{与开源社区协作的方法、技巧、注意事项}
 
-\vspace{1em}
-\begin{itemize}
-\item 纯数字的UNIX时间戳；
-\item 如果环境变量中给定了这个变量，则将所有自己程序的时间戳设为该变量对应的时间。
-\item 已经被包括\texttt{gcc}在内的各大项目所接受，从根本上解决了时间戳问题。
-\end{itemize}
-\end{frame}
-\begin{frame}[t]{工作成果展示}{与上游的合作}
-团队向各种上游发了各式各样的缺陷报告与补丁。略举数例：
+\subfile{25-slang}
+\subfile{30-floss-tricks}
 
-\vspace{1em}
-\begin{itemize}
-\item \texttt{gcc}的\texttt{\_\_DATE\_\_}与\texttt{\_\_TIME\_\_}宏采用\texttt{SOURCE\_DATE\_EPOCH}来防止时间戳问题；
-\item \texttt{python} 3.6开始提供有序字典类型；\footnote{\url{https://mail.python.org/pipermail/python-dev/2016-September/146327.html}}
-\item \TeX{}Live 2016开始，除了Lua\TeX{}和原始\TeX{}以外均支持\texttt{SOURCE\_DATE\_EPOCH}；\footnote{\url{https://www.preining.info/blog/2016/06/tex-live-2016-released/}}
-\item \texttt{doxygen}时间戳问题。\footnote{\url{https://bugs.debian.org/792201}}
-\end{itemize}
-\end{frame}
-\subsection{工作进度}
+\section{Linux桌面软件本地化情况简介}
 
-\section{其他项目}
-\begin{frame}{其他参与可重复性构建的软件项目}
-\begin{columns}
-\begin{column}{.5\textwidth}
-\begin{itemize}
-  \item Arch Linux
-  \item Bitcoin
-  \item coreboot
-  \item Debian
-  \item F-Droid
-  \item Fedora
-  \item FreeBSD
-\end{itemize}
-\end{column}
-\begin{column}{.5\textwidth}
-\begin{itemize}
+\subfile{70-l10n-i18n.tex}
 
-  \item Guix
-  \item LEDE
-  \item NetBSD
-  \item OpenWrt
-  \item openSUSE
-  \item Tails
-  \item Tor Browser
-\end{itemize}
-\end{column}
-\end{columns}
-
-\vfill
-\begin{center}
-……还有更多！
-\end{center}
-\end{frame}
-\section{未来展望}
-\begin{frame}{未来展望}{项目带来的额外优势}
-使用持续集成方式探测检查软件包的可重复构建性，还可能带来以下额外好处：
-\begin{enumerate}
-\item 将\texttt{buildd}的一部分构建任务交给持续集成系统，减轻负担；
-\item 承担一部分质保任务，探测软件包regression；
-\item 检查出软件在边界条件上可能出现的缺陷；
-\item 避免不确定性因素对软件质量的影响（互联网质量、时间戳等）。
-\end{enumerate}
-\vfill
-\end{frame}
 \section*{参考}
 \begin{frame}[t]{参考}{项目资源}
 \begin{itemize}
@@ -224,6 +110,7 @@
 \item 项目历史记录：\url{https://wiki.debian.org/ReproducibleBuilds/History}
 \end{itemize}
 \end{frame}
+
 \begin{frame}{参考}{进一步阅读}
 \nocite{*}
 \printbibliography
