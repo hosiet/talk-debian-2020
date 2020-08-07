@@ -1,0 +1,16 @@
+% 40-debian-dev.tex
+
+\begin{frame}{Debian是如何开发的？}
+	作为一款完整功能的Linux操作系统，Debian和衍生发行版不同，并没有所谓“上游发行版”。了解Debian的开发工作流有益于了解一个操作系统应当如何独立存在并维持。
+	
+	\vfill
+	
+	最最核心的内容无非如下三点：
+	
+	\begin{itemize}
+		\item 以软件包（deb包）为核心：从系统内核到软件库再到各种软件，所有系统文件均由\texttt{.deb}软件包提供；
+		\item Debian开发者和软件包维护者（即打包人员）从软件原作者处获取源代码，结合自己编写的打包指令便可使用打包工具链生成新的\texttt{.deb}包；
+		\item 打包人员在本地测试通过后将软件源代码和打包指令数字签名，以\textbf{源码包}的形式上传\footnote{请注意，默认情况下是不会上传\texttt{.deb}包的。}至\texttt{Debian FTP Master}\footnote{请将其理解为“文件服务器”，FTP的名字是历史遗留下来的。}服务器，服务器端会自动验证数字签名、权限并为不同硬件架构构建\texttt{.deb}包、将构建成果放入软件源并随镜像网络分发至全球各地。
+	\end{itemize}
+	
+\end{frame}
