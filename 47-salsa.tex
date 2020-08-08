@@ -1,5 +1,25 @@
 % 47-salsa.tex
 
 \begin{frame}{正确认识Git打包仓库（Debian Salsa GitLab）}
-	a
+	Debian的版本控制系统（VCS）在2018年前后迁移到了自建GitLab平台，主要用于托管Debian打包仓库和其它Debian相关项目的代码。
+	\begin{itemize}
+		\item 在Debian中维护软件包时配套git打包仓库是推荐的，但是是完全可选的。
+		\item 没有git打包仓库仍然可以正常维护软件包\footnote{如需了解Git打包仓库的采纳比例，请浏览\url{https://trends.debian.net}。}。
+		\item 如果使用git打包仓库维护打包用脚本和打包历史，请遵循DEP-14规范\footnote{\url{https://dep-team.pages.debian.net/deps/dep14}}或者\texttt{git-buildpackage}工具可以识别的规范设置Git分支名称和布局。
+        \item     如果软件包由个人维护，一般推荐将Git打包仓库设置在\texttt{https://salsa.debian.org/debian/}团队下；团队维护的软件包则位于\texttt{https://salsa.debian.org/<teamname-team>}的命名空间下。
+        \item 没有强制性要求打包用Git仓库必须设置在Debian Salsa GitLab平台上。
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{正确认识Git打包仓库（Debian Salsa GitLab）（二）}
+	如何维护设置了Git打包仓库的软件？
+	\begin{itemize}
+		\item 在Git仓库内更新软件包版本和软件源代码，更新软件打包脚本，准备changelog；
+		\item 使用诸如\texttt{git-buildpackage}之类的工具从Git仓库直接尝试对软件的新版本进行打包；
+		\item 本地测试通过后将打包构建得到的源码包进行数字签名，上传至Debian FTP Master服务器。
+	\end{itemize}
+
+    \vfill
+
+    目前Debian的Git打包仓库主要用于多人合作和历史记录，正确配置后还可以利用GitLab Runner实现自动CI/CD集成探测regression\footnote{\url{https://salsa.debian.org/salsa-ci-team/pipeline}}。因存在反对的声音，没有实现从Git仓库直接上传至FTP Master服务器的自动化\footnote{另一个发行版Chakra Linux已经这么做了。}。
 \end{frame}
