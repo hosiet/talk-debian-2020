@@ -10,25 +10,3 @@
 		\item 大约每两年发布一个稳定版，每个版本支持时间约为五年；下一个大版本会是2021年5月的Debian 11（Bullseye）。
 	\end{itemize}
 \end{frame}
-
-\begin{frame}{Debian的社区文化和特点}
-	\begin{itemize}
-		\item 对法律上的问题十分严肃，这尤其体现在对软件包的许可证审查上（通常会精细到源代码文件为单位进行审查）；
-		\item 开发流程上比较严谨\footnote{换句话说有官僚主义的倾向。}；
-		\item 软件包维护传统上有较强的“维护者强所有关系（strong package ownership）”的倾向，但近些年有将软件包由多个维护者共同维护或团队维护的趋势；这个特点对下游发行版向Debian反哺贡献的效率有部分影响。
-		\item 以志愿者模式参与开发和维护：Debian不是公司，大部分成员都是兼职维护Debian软件包/维护基础设施，少部分成员由其他公司雇佣并将以志愿者身份参与Debian开发作为工作一部分（如Debian中存在Canonical公司\footnote{Canonical开发并维护Ubuntu，Ubuntu是Debian的衍生发行版。}员工等）。
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{Debian的社区文化和特点（二）}
-	\begin{itemize}
-		\item 主要以协商和讨论的方式决定开发方向；技术问题争论无果时会由数位资深开发者组成的技术委员会（“CTTE”,Technical Committee）作出决断，重大技术/非技术问题会由全体投票的方式决定方案\footnote{\url{https://www.debian.org/vote/};
-		\item 在可能的情况下尽量给用户提供多种选择，软件功能在合理的前提下尽可能多地启用。例如：
-		\begin{itemize}
-			\item 提供多种初始化（init）系统的选择；
-			\item 同时提供并维护多种桌面环境的软件套件；
-			\item 软件库的构建flag能启用的会尽量启用（如果发现有缺失的功能可以向维护者建议修复）；
-			\item 然而某些部分严格遵循标准，如CPU Baseline（AMD64不会启用SSE3/SSE4/AVX）\footnote{但Debian为特殊的软件包提供了变通方式，详见 \href{https://tracker.debian.org/pkg/isa-support}{isa-support} 源码包内容。}；
-		\end{itemize}
-	\end{itemize}
-\end{frame}
