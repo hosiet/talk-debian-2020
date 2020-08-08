@@ -1,7 +1,8 @@
 %&XeLaTeX
 %
 % Copyright 2020  Boyuan Yang <byang@debian.org>
-% All Rights Reserved.
+% This document is published under Creative Commons Attribution-ShareAlike
+% 4.0 International License.
 %
 % Build HOWTO
 % -----------
@@ -23,6 +24,7 @@
     colorlinks=true,
 }
 \usepackage{graphicx}
+\usepackage{multicol}
 \usepackage{tikz}
 \usetikzlibrary{arrows, shapes, chains, graphs}
 \usepackage[
@@ -71,6 +73,7 @@
 		\end{itemize}
 	\end{itemize}
     \vfill
+    本次演示文稿可以在 \url{https://github.com/hosiet/talk-debian-2020} 找到。
 \end{frame}
 
 
@@ -116,7 +119,7 @@
 \subsection{社区协作技巧}
 \subfile{30-floss-tricks}
 
-\section{Linux桌面软件本地化情况简介}
+\section{Linux桌面中文本地化情况简介}
 
 \subfile{70-l10n-i18n}
 
@@ -146,6 +149,8 @@
 {\Large 问~答~环~节}
 \\
 任何与Debian相关的问题
+\vfill
+本次演示文稿可以在 \url{https://github.com/hosiet/talk-debian-2020} 找到。
 \end{center}
 \end{frame}
 
@@ -160,34 +165,6 @@ This document is published under \href{https://creativecommons.org/licenses/by-s
 % Bibliography
 %----------------------
 \begin{filecontents*}{debianrefs.bib}
-@online{debianwikisou,
-  author = {the Debian Project},
-  title = {Source Only Upload},
-  year = 2016,
-  url = {https://wiki.debian.org/SourceOnlyUpload},
-  urldate = {2016-11-23}
-}
-@online{minidebconf20161113,
-  author = {Chris Lamb and
-            Holger Levsen},
-  title = {Reproducible builds status update},
-  year = 2016,
-  url = {https://people.debian.org/~lamby/2016-11-13-MiniDebConfCambridge/},
-  urldate = {2016-11-23},
-}
-@online{debian-reproduciblebuilds-homepage,
-  author = {the Debian Project},
-  title = {Overview of various statistics about reproducible builds},
-  year = 2016,
-  url = {https://tests.reproducible-builds.org/debian/reproducible.html},
-  urldate = {2016-11-24},
-}
-@online{debian-reproduciblebuilds-sourcedateepoch,
-  author = {Chris Lamb},
-  title = {SOURCE\_DATE\_EPOCH specification},
-  year = 2015,
-  url = {https://reproducible-builds.org/specs/source-date-epoch/},
-}
 \end{filecontents*}
 
 %----------------------

@@ -15,5 +15,45 @@
 	
 \end{frame}
 
-\begin{frame}
+\begin{frame}{Debian是如何开发的？（二）}{初次引入软件包，以及后续维护}
+	初次引入新软件包需要由\texttt{Debian FTP Masters}团队进行审查，确保软件许可证符合要求（是自由的）且软件质量达标；初次审查通过后，后续更新软件包不再需要\texttt{FTP Masters}审查，可以由DD自行上传更新。
+	
+	\vfill
+	
+	日常工作：监视上游新版本并进行打包，修复软件包存在的Bug。
+	\begin{description}
+		\item[监视上游新版本] 只要在打包时正确编写了\texttt{debian/watch}文件，稍后在Debian DDPO和Debian Maintainer Dashboard站点上会自动提示新版本需要打包；
+		\item[修复Bug] 软件包列明的维护者会以电子邮件形式收到用户提交的Bug报告，维护者需要相应进行处理。所有Bug报告也可在\url{tracker.debian.org}或\url{bugs.debian.org}网页上查询到。Bug提交者、软件包维护者和所有其他人士均可以回复电子邮件的形式在Bug报告下留言。
+	\end{description}
+\end{frame}
+
+\begin{frame}{Debian是如何开发的？（三）}{软件包的团队维护}
+	某一类软件包可能有相似的特性，它们通常由一个专门存在的团队进行维护。这里稍举几例：
+	
+	\vfill
+	
+	\begin{multicols}{2}
+		\begin{itemize}
+		    \item Debian GCC Maintainers
+		    \item Debian Multimedia Maintainers
+		    \item Debian X Strike Force
+	    	\item Debian Wine Party
+		    \item Debian Fonts Task Force
+		    \item Debian Python Modules Team
+		    \item Debian Rust Maintainers
+	    \end{itemize}
+    	\columnbreak
+    	\begin{itemize}
+    		\item Debian Java Maintainers
+    		\item Debian Deepin Packaging Team
+    		\item Debian Desktop Themes Team
+    		\item Debian Chinese Team
+    		\item Debian Cloud Team
+    		\item Debian Qt and KDE Team
+    		\item Debian+Ubuntu MATE Packaging Team
+    	\end{itemize}
+    \end{multicols}
+    
+
+    如需修改团队旗下的软件包，与团队取得联系是很重要的；一般这些团队都有属于自己的邮件列表和GitLab团队，可以通过查看邮件列表存档的活跃人员或者GitLab团队成员名单了解应当与谁联系。
 \end{frame}
